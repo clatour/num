@@ -47,7 +47,7 @@ macro_rules! path_local {
 
 macro_rules! pathvec_std {
     ($cx:expr, $first:ident :: $($rest:ident)::+) => (
-        if $cx.use_std {
+        if $cx.crate_root == Some("std") {
             pathvec!(std :: $($rest)::+)
         } else {
             pathvec!($first :: $($rest)::+)
